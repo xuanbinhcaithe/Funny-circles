@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <canvas id="myCanvas" width="1000px" height="2000px" style="border:1px solid red";></canvas>
+        <script>
+          function thongSo(x,y,r) {
+              this.toaDox=x;
+              this.toaDoy=y;
+              this.radius=r;
+          }
+          function thongsoRandom() {
+              return Math.floor(Math.random()*255);
+          }
+          function ranDomColor() {
+              let red= thongsoRandom();
+              let blu=thongsoRandom();
+              let green =thongsoRandom();
+                return "rgb("+red+","+blu+","+green+")";
+          }
+          function taoDuongTron() {
+              let hinhve=document.getElementById("myCanvas").getContext("2d");
+              let x=Math.random()*window.innerWidth;
+              let y=Math.random()*window.innerHeight;
+              let r=Math.random()*80;
+              let thongso1=new thongSo(x,y,r);
+              let color=ranDomColor();
+              hinhve.beginPath();
+              hinhve.arc(thongso1.toaDox,thongso1.toaDoy,thongso1.radius,0,2*Math.PI);
+              hinhve.fillStyle=color;
+              hinhve.fill();
+          }
+          function soLuongNgauNhien() {
+              for (let i=0;i<30;i++) {
+                  taoDuongTron();
+              }
+          }
+          soLuongNgauNhien();
+        </script>
+
+
+</body>
+</html>
